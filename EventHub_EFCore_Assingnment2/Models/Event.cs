@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EventHub_EFCore_Assingnment2.Models
+﻿namespace EventHub_EFCore_Assingnment2.Models
 {
     public class Event
     {
@@ -11,7 +7,16 @@ namespace EventHub_EFCore_Assingnment2.Models
         public string Description { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }
-        public int MaxAttendees { get; set; }
+
+        private int _maxAttendees;
+
+  
+        public int MaxAttendees
+        {
+            get => _maxAttendees;
+            set => _maxAttendees = value < 0 ? 0 : value;
+        }
+
         public int? ParentEventId { get; set; }
         public Event ParentEvent { get; set; }
         public int OrganizerId { get; set; }

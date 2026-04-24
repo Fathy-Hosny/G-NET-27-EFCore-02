@@ -26,12 +26,11 @@ namespace EventHub_EFCore_Assingnment2.Configurations
             builder.Property(e => e.EndDate)
                 .HasColumnType("datetime2");
 
-      
             builder.Property(e => e.MaxAttendees)
-                .HasField("_maxAttendees")
-                .HasColumnType("int");
+    .HasField("_maxAttendees") 
+    .UsePropertyAccessMode(PropertyAccessMode.Field) 
+    .HasColumnType("int");
 
-        
             builder.HasOne(e => e.ParentEvent)
                 .WithMany()
                 .HasForeignKey(e => e.ParentEventId)
